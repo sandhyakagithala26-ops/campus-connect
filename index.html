@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f7fb">
+  <title>CampusConnect | Sandhya Rani</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#overview"><span class="brand-mark">✦</span><span>Campus<span class="brand-blue">Connect</span></span></a>
+      <div class="student-mini">
+        <div class="avatar small">SR</div>
+        <div><strong>Kagithala Sandhya Rani</strong><small>B.Tech · AI & ML</small></div>
+      </div>
+      <p class="nav-label">STUDENT SPACE</p>
+      <nav class="side-nav">
+        <a class="active" href="#overview"><span>▦</span> Overview</a>
+        <a href="#attendance"><span>◷</span> Attendance</a>
+        <a href="#timetable"><span>▤</span> Timetable</a>
+        <a href="#assignments"><span>✓</span> Assignments</a>
+        <a href="#education"><span>▣</span> Academics</a>
+        <a href="#projects"><span>✧</span> Projects</a>
+        <a href="#contact"><span>✉</span> Contact</a>
+      </nav>
+      <div class="sidebar-bottom"><div class="help-icon">?</div><div><strong>Need help?</strong><small>Contact your student support</small></div></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+        <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Search courses, projects, skills..."></label>
+        <div class="top-actions"><button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☼</button><div class="avatar top-avatar">SR</div></div>
+      </header>
+
+      <section class="welcome" id="overview">
+        <div>
+          <p class="date-line" id="todayDate">YOUR STUDENT OVERVIEW</p>
+          <h1>Good day, Sandhya <span class="sun">☀️</span></h1>
+          <p class="subheading">Here’s your academic and project snapshot.</p>
+        </div>
+        <button class="export-btn" id="exportBtn"><span>↓</span> Export overview</button>
+      </section>
+
+      <section class="stats-grid" aria-label="Student overview statistics">
+        <article class="stat-card"><div class="stat-top"><span>Current CGPA</span><span class="stat-icon blue">✧</span></div><div class="stat-value">8.6 <small>/ 10</small></div><p class="stat-note">B.Tech · AI & ML</p></article>
+        <article class="stat-card"><div class="stat-top"><span>Graduation year</span><span class="stat-icon violet">▣</span></div><div class="stat-value">2027</div><p class="stat-note">Final-year student</p></article>
+        <article class="stat-card"><div class="stat-top"><span>Featured projects</span><span class="stat-icon gold">✦</span></div><div class="stat-value">02</div><p class="stat-note">AI/ML and IoT projects</p></article>
+        <article class="stat-card"><div class="stat-top"><span>Languages</span><span class="stat-icon green">文</span></div><div class="stat-value">02</div><p class="stat-note">English · Telugu</p></article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel attendance-panel" id="attendance">
+          <div class="panel-heading"><div><h2>Academic profile</h2><p>Your education at a glance</p></div><a href="#education">View details →</a></div>
+          <div class="profile-progress">
+            <div class="progress-title"><span>B.Tech – CSE (AI & ML)</span><strong>8.6 CGPA</strong></div><div class="progress-track"><span style="width:86%"></span></div>
+            <div class="progress-title"><span>Intermediate</span><strong>7.4 CGPA</strong></div><div class="progress-track"><span style="width:74%"></span></div>
+            <div class="progress-title"><span>SSC</span><strong>9.9 CGPA</strong></div><div class="progress-track"><span style="width:99%"></span></div>
+          </div>
+          <div class="notice"><span>✦</span><div><strong>Focus area: Artificial Intelligence</strong><p>Python, machine learning, prompt engineering and LLM workflows.</p></div></div>
+        </article>
+
+        <article class="panel skills-panel">
+          <div class="panel-heading"><div><h2>Skills snapshot</h2><p>Core tools and concepts</p></div><a href="#skills">All skills →</a></div>
+          <div class="skill-bars">
+            <div><div class="skill-label"><span>Python</span><strong>Programming</strong></div><div class="progress-track"><span style="width:82%"></span></div></div>
+            <div><div class="skill-label"><span>Machine Learning</span><strong>AI / ML</strong></div><div class="progress-track"><span style="width:78%"></span></div></div>
+            <div><div class="skill-label"><span>HTML & CSS</span><strong>Web</strong></div><div class="progress-track"><span style="width:72%"></span></div></div>
+            <div><div class="skill-label"><span>Prompt Engineering</span><strong>Generative AI</strong></div><div class="progress-track"><span style="width:80%"></span></div></div>
+          </div>
+          <p class="tiny-note">Visual indicators are portfolio summaries, not formal test scores.</p>
+        </article>
+      </section>
+
+      <section class="content-grid lower-grid">
+        <article class="panel timetable-panel" id="timetable">
+          <div class="panel-heading"><div><h2>Learning roadmap</h2><p>Current focus areas</p></div><a href="#internship">Internship →</a></div>
+          <div class="roadmap-row"><div class="roadmap-date">01</div><div class="roadmap-detail"><strong>Python & Machine Learning</strong><span>Programming · Classification · Data analysis</span></div><span class="status status-blue">Core skill</span></div>
+          <div class="roadmap-row"><div class="roadmap-date">02</div><div class="roadmap-detail"><strong>Prompt Engineering for AI</strong><span>AICTE–EduSkills virtual internship</span></div><span class="status status-green">Internship</span></div>
+          <div class="roadmap-row"><div class="roadmap-date">03</div><div class="roadmap-detail"><strong>Generative AI capstone</strong><span>Content generation · Sentiment analysis</span></div><span class="status status-gold">Project</span></div>
+        </article>
+        <article class="panel" id="assignments">
+          <div class="panel-heading"><div><h2>Featured projects</h2><p>Selected work from your portfolio</p></div><a href="#projects">See projects →</a></div>
+          <div class="assignment-row"><div class="project-symbol blue-bg">▤</div><div class="assignment-info"><strong>News Spam Detection</strong><span>Machine Learning · Text classification</span></div><span class="arrow">↗</span></div>
+          <div class="assignment-row"><div class="project-symbol gold-bg">♧</div><div class="assignment-info"><strong>Smart Forest Fire Detection</strong><span>IoT · Sensor-based monitoring</span></div><span class="arrow">↗</span></div>
+          <div class="assignment-row"><div class="project-symbol violet-bg">✧</div><div class="assignment-info"><strong>AI Content Generation</strong><span>Internship capstone project</span></div><span class="arrow">↗</span></div>
+        </article>
+      </section>
+
+      <section class="panel details-panel" id="education">
+        <div class="panel-heading"><div><h2>Education history</h2><p>Academic qualifications</p></div></div>
+        <div class="table-wrap"><table><thead><tr><th>DEGREE</th><th>INSTITUTION</th><th>CGPA</th><th>YEAR</th></tr></thead><tbody>
+          <tr><td><strong>B.Tech – CSE (AI & ML)</strong></td><td>Mohan Babu University</td><td><span class="grade">8.6</span></td><td>2027</td></tr>
+          <tr><td><strong>Intermediate</strong></td><td>Sri Chaitanya Junior College</td><td><span class="grade">7.4</span></td><td>2023</td></tr>
+          <tr><td><strong>SSC</strong></td><td>Sri Chaitanya Techno School</td><td><span class="grade">9.9</span></td><td>2021</td></tr>
+        </tbody></table></div>
+      </section>
+
+      <section class="content-grid lower-grid">
+        <article class="panel" id="skills"><div class="panel-heading"><div><h2>Technical skills</h2><p>Your toolkit</p></div></div><div class="chip-list"><span>Python</span><span>HTML</span><span>CSS</span><span>Machine Learning</span><span>Prompt Engineering</span><span>LLM Fundamentals</span><span>OpenAI API</span><span>Hugging Face Transformers</span><span>Sentiment Analysis</span><span>Data Visualization</span></div></article>
+        <article class="panel" id="internship"><div class="panel-heading"><div><h2>Internship experience</h2><p>Professional learning</p></div></div><div class="internship-card"><div class="internship-mark">✦</div><div><strong>AICTE–EduSkills Virtual Internship</strong><p>Prompt Engineering for AI</p><small>August 2026 – October 2026</small></div></div><ul class="compact-list"><li>Explored AI, LLMs and prompt design.</li><li>Used OpenAI API and Hugging Face Transformers.</li><li>Created an AI-powered content generation capstone.</li></ul></article>
+      </section>
+
+      <section class="content-grid lower-grid" id="projects">
+        <article class="panel project-card"><span class="project-label">MACHINE LEARNING</span><h2>News Spam Detection</h2><p>Classifier to distinguish real and spam news using keywords, source credibility, and writing patterns.</p><div class="chip-list"><span>Python</span><span>Classification</span><span>Text analysis</span></div></article>
+        <article class="panel project-card"><span class="project-label">INTERNET OF THINGS</span><h2>Smart Sensor-Based Forest Fire Detection</h2><p>Real-time monitoring concept using Arduino Mega, flame sensor, DHT22 sensor, and wind vane to support fire-spread prediction.</p><div class="chip-list"><span>Arduino Mega</span><span>DHT22</span><span>IoT</span></div></article>
+      </section>
+
+      <section class="contact-panel" id="contact"><div><p class="eyebrow">LET'S CONNECT</p><h2>Ready to build something meaningful?</h2><p>Reach out for internship opportunities, collaborations, or project discussions.</p><p class="location">⌖ Tirupati, Andhra Pradesh</p></div><div class="contact-links"><a href="mailto:sandhyakagithala26@gmail.com">✉ sandhyakagithala26@gmail.com</a><a href="tel:+919849055076">☎ +91 98490 55076</a><a href="#" id="linkedinLink">↗ LinkedIn Profile (add URL)</a></div></section>
+      <footer>© <span id="year"></span> Kagithala Sandhya Rani · CampusConnect Student Dashboard</footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
