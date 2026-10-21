@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b2444">
+<title>CampusConnect | Sandhya Rani</title>
+<style>
+
+*{box-sizing:border-box}
+:root{--blue:#278fdd;--navy:#172b45;--muted:#8190a4;--page:#f4f7fb;--panel:#fff;--line:#e6edf5;--text:#24364d;--shadow:0 8px 28px rgba(31,57,89,.06)}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:#111827}
+.hidden{display:none!important}
+/* Login screen */
+.login-page{min-height:100vh;display:grid;place-items:center;padding:28px 16px;background:radial-gradient(ellipse at 18% 85%,#064c79 0,transparent 38%),linear-gradient(135deg,#0a1e3b,#123c70 65%,#0b2549)}
+.login-card{width:min(100%,510px);background:#fff;border:1px solid #ffffffb3;border-radius:24px;padding:34px 36px 29px;box-shadow:0 24px 70px #0004}
+.brand{display:flex;align-items:center;gap:13px;margin-bottom:33px;color:#101827;font-size:21px;font-weight:850;letter-spacing:-.5px;text-decoration:none}
+.brand-icon{width:44px;height:44px;border-radius:13px;background:#2b91d0;color:#071d38;display:grid;place-items:center;font-size:24px}
+.eyebrow{color:#67758a;font-size:12px;margin:0 0 14px}
+.login-card h1{font-size:36px;letter-spacing:-1px;margin:0 0 9px;line-height:1.15}
+.intro{color:#667085;font-size:15px;margin:0 0 28px}
+.login-card form{display:grid;gap:9px}.login-card label{font-size:13px;font-weight:750;margin-top:4px}
+.login-card input{width:100%;height:47px;border:1px solid #d7dee8;border-radius:11px;padding:0 14px;color:#182338;font:inherit;outline:none;background:#fff}
+.login-card input:focus{border-color:#2589d1;box-shadow:0 0 0 3px #2589d11c}
+.password-wrap{position:relative}.password-wrap input{padding-right:64px}
+.show-password{position:absolute;right:10px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:#277db8;font-size:12px;font-weight:750;cursor:pointer}
+.submit-btn{margin-top:10px;width:100%;height:49px;border:0;border-radius:11px;background:linear-gradient(100deg,#1688c8,#0863a8);color:#fff;font:inherit;font-weight:750;cursor:pointer;box-shadow:0 8px 17px #0877b51e}
+.demo-box{background:#f5f7fa;border-radius:12px;padding:16px 17px;margin-top:25px;font-size:12px;color:#526176}
+.demo-box strong{display:block;color:#202b3b;font-size:13px;margin-bottom:8px}.demo-box p{margin:5px 0}
+.demo-box code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:#27374d}
+.disclaimer{font-size:11px;color:#7c8797;margin:15px 0 0}.message{margin:12px 0 0;font-size:12px;color:#bd3030}.message.success{color:#13784a}
+/* Dashboard layout */
+#portfolioPage{background:var(--page);min-height:100vh;color:var(--text)}
+.app-shell{display:flex;min-height:100vh}
+.sidebar{width:245px;flex:0 0 245px;background:#fff;border-right:1px solid var(--line);padding:25px 16px;display:flex;flex-direction:column;min-height:100vh;position:sticky;top:0;height:100vh;z-index:10}
+.sidebar .brand{font-size:19px;margin:0 0 30px;padding:0 8px}
+.brand-blue{color:var(--blue)}
+.student-mini{display:flex;gap:11px;align-items:center;padding:12px 8px 23px;border-bottom:1px solid var(--line)}
+.student-mini strong{display:block;font-size:12px;line-height:1.4}.student-mini small{display:block;color:var(--muted);font-size:11px;margin-top:4px}
+.avatar{display:grid;place-items:center;border-radius:50%;background:#dceeff;color:#176eb8;font-weight:800;flex-shrink:0}
+.avatar.small{width:39px;height:39px;font-size:13px}.top-avatar{width:40px;height:40px}
+.nav-label{font-size:10px;letter-spacing:1.2px;color:#9aa6b6;font-weight:800;margin:25px 10px 10px}
+.side-nav{display:grid;gap:5px}.side-nav a{display:flex;gap:12px;align-items:center;text-decoration:none;color:#66758a;padding:12px;border-radius:10px;font-size:13px;font-weight:650}
+.side-nav a span{width:18px;text-align:center;font-size:17px}.side-nav a:hover,.side-nav a.active{background:#eaf4ff;color:#187dc3}
+.sidebar-bottom{margin-top:auto;display:flex;gap:10px;align-items:center;background:#f6f9fc;border-radius:12px;padding:13px 10px}
+.help-icon{border-radius:50%;width:28px;height:28px;display:grid;place-items:center;background:#e4f0fc;color:#278fdd;font-weight:800}
+.sidebar-bottom strong{display:block;font-size:11px}.sidebar-bottom small{display:block;color:var(--muted);font-size:10px;margin-top:4px}
+.main{min-width:0;flex:1;padding:0 30px 24px}
+.topbar{height:76px;display:flex;align-items:center;gap:17px;border-bottom:1px solid var(--line);margin:0 -30px;padding:0 30px;background:rgba(255,255,255,.88)}
+.icon-btn{border:0;background:transparent;color:#61748b;font-size:22px;cursor:pointer;border-radius:9px;width:39px;height:39px}
+.icon-btn:hover{background:#edf4fb}.menu-btn{display:none}
+.search{display:flex;align-items:center;gap:10px;background:#f6f8fb;border:1px solid #e3eaf3;border-radius:12px;padding:0 13px;height:43px;max-width:500px;flex:1;color:#91a0b2}
+.search input{border:0;outline:0;background:transparent;width:100%;font:inherit;color:var(--text);font-size:13px}
+.top-actions{margin-left:auto;display:flex;align-items:center;gap:16px}
+.welcome{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:30px 0 25px}
+.date-line{font-size:12px;color:#8795a8;margin:0 0 9px}.welcome h1{font-size:clamp(24px,3vw,34px);letter-spacing:-1px;color:var(--navy);margin:0 0 8px}
+.sun{font-size:25px}.subheading{margin:0;color:#8795a8;font-size:14px}
+.export-btn{border:1px solid #e1e8f0;border-radius:12px;background:#fff;padding:13px 17px;color:#596a80;font:inherit;font-size:13px;cursor:pointer;white-space:nowrap}.export-btn span{font-size:19px;margin-right:8px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:18px}
+.stat-card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:17px;box-shadow:var(--shadow)}
+.stat-card{padding:19px}.stat-top{display:flex;justify-content:space-between;align-items:center;color:#8190a4;font-size:12px;gap:8px}
+.stat-icon{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:20px}
+.blue{color:#278fdd}.violet{color:#7b73dc}.gold{color:#c58a23}.green{color:#29966c}
+.stat-icon.blue{background:#eaf4ff}.stat-icon.violet{background:#f0efff}.stat-icon.gold{background:#fff5df}.stat-icon.green{background:#e8f8f0}
+.stat-value{font-size:30px;font-weight:800;letter-spacing:-.7px;color:#1e3048;margin:12px 0 4px}.stat-value small{font-size:13px;letter-spacing:0;font-weight:650}
+.stat-note{font-size:11px;color:#94a0af;margin:0}
+.content-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;margin-bottom:18px}
+.lower-grid{grid-template-columns:1fr 1fr}
+.panel{padding:21px;min-width:0}
+.panel-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:20px}
+.panel-heading h2,.project-card h2{font-size:17px;letter-spacing:-.25px;margin:0 0 5px;color:#24364d}
+.panel-heading p{margin:0;font-size:12px;color:#8b99ab}
+.panel-heading>a{font-size:12px;color:#278fdd;text-decoration:none;white-space:nowrap;font-weight:700}
+.progress-title{display:flex;justify-content:space-between;gap:12px;font-size:12px;margin:17px 0 8px}.progress-title strong{white-space:nowrap}
+.progress-track{height:7px;border-radius:10px;background:#edf2f7;overflow:hidden}.progress-track span{display:block;height:100%;border-radius:10px;background:#368fdf}
+.notice{display:flex;gap:12px;background:#f2f8ff;border:1px solid #e4f0fc;border-radius:12px;padding:13px;margin-top:23px}.notice>span{color:#278fdd;font-size:20px}.notice strong{font-size:12px}.notice p{font-size:11px;line-height:1.5;color:#8190a4;margin:5px 0 0}
+.skill-bars{display:grid;gap:17px}.skill-label{display:flex;justify-content:space-between;gap:10px;font-size:12px;margin-bottom:8px}.skill-label strong{font-size:10px;color:#8997a9}
+.tiny-note{font-size:10px;color:#98a4b3;line-height:1.5;margin:18px 0 0}
+.roadmap-row,.assignment-row{display:flex;align-items:center;gap:12px;padding:13px 0;border-top:1px solid #edf1f6}.roadmap-date{width:34px;height:34px;border-radius:10px;background:#eaf4ff;color:#278fdd;display:grid;place-items:center;font-size:12px;font-weight:800;flex-shrink:0}
+.roadmap-detail,.assignment-info{min-width:0;flex:1}.roadmap-detail strong,.assignment-info strong{display:block;font-size:12px;line-height:1.4}.roadmap-detail span,.assignment-info span{display:block;font-size:10px;color:#8b99ab;margin-top:4px;line-height:1.5}
+.status{font-size:9px;font-weight:800;padding:6px 7px;border-radius:7px;white-space:nowrap}.status-blue{background:#eaf4ff;color:#277fbd}.status-green{background:#e8f8f0;color:#22865e}.status-gold{background:#fff4dd;color:#a8771d}
+.project-symbol{width:35px;height:35px;border-radius:10px;display:grid;place-items:center;flex-shrink:0}.blue-bg{background:#eaf4ff;color:#278fdd}.gold-bg{background:#fff5df;color:#c58a23}.violet-bg{background:#f0efff;color:#7b73dc}.arrow{color:#9aa8b8}
+.details-panel{margin-bottom:18px}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:520px;font-size:12px}th{background:#f5f8fc;color:#8795a7;font-size:10px;letter-spacing:.5px;text-align:left}td,th{padding:14px 13px;border-bottom:1px solid #edf1f6}td{color:#607086}td strong{color:#304158}.grade{background:#e9f4ff;color:#227dbd;padding:5px 8px;border-radius:7px;font-weight:800}
+.chip-list{display:flex;flex-wrap:wrap;gap:8px}.chip-list span{background:#f1f7fd;color:#417da9;border:1px solid #e5f0fa;border-radius:8px;padding:7px 10px;font-size:11px}
+.internship-card{display:flex;gap:12px;align-items:flex-start}.internship-mark{width:39px;height:39px;border-radius:12px;display:grid;place-items:center;background:#eaf4ff;color:#278fdd;flex-shrink:0}
+.internship-card strong{font-size:12px;line-height:1.5}.internship-card p{font-size:12px;color:#77879b;margin:5px 0}.internship-card small{font-size:10px;color:#9aa6b5}
+.compact-list{padding-left:18px;color:#75859a;font-size:11px;line-height:1.8}
+.project-card{padding:22px}.project-label{font-size:9px;letter-spacing:1px;color:#278fdd;font-weight:850}.project-card h2{font-size:17px;margin-top:10px}.project-card p{font-size:12px;line-height:1.7;color:#7b899c}
+.contact-panel{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:27px;border-radius:17px;background:linear-gradient(120deg,#e8f4ff,#f4f8ff);border:1px solid #dcecfb}
+.contact-panel .eyebrow{color:#278fdd;letter-spacing:1.2px;font-weight:800;font-size:10px}.contact-panel h2{font-size:20px;margin:0 0 8px;color:#213650}.contact-panel p{font-size:12px;color:#77889d;line-height:1.6}.contact-panel .location{margin-bottom:0}
+.contact-links{display:grid;gap:11px;min-width:245px}.contact-links a{font-size:12px;color:#277fb9;text-decoration:none;overflow-wrap:anywhere}
+.main footer{text-align:center;color:#9aa6b5;font-size:11px;padding:23px 0 0}
+.toast{position:fixed;bottom:20px;right:20px;background:#172b45;color:#fff;padding:12px 17px;border-radius:10px;font-size:12px;box-shadow:var(--shadow);display:none;z-index:50}.toast.show{display:block}
+body.dark{--page:#101a29;--panel:#172437;--line:#29384b;--text:#e5edf7;--navy:#eef5ff;--muted:#a7b5c8;background:#101a29;color:#e5edf7}
+body.dark .sidebar,body.dark .topbar,body.dark .stat-card,body.dark .panel,body.dark .export-btn{background:#172437;color:#e5edf7}
+body.dark .student-mini strong,body.dark .panel-heading h2,body.dark .project-card h2,body.dark .stat-value,body.dark td strong{color:#e5edf7}
+body.dark .search,body.dark .sidebar-bottom,body.dark th{background:#1e2d42}
+body.dark .search input{color:#e5edf7}
+@media(max-width:1050px){.sidebar{width:220px;flex-basis:220px}.main{padding:0 22px 22px}.topbar{margin:0 -22px;padding:0 22px}.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.content-grid{grid-template-columns:1fr}.contact-panel{align-items:flex-start;flex-direction:column}.contact-links{min-width:0}}
+@media(max-width:720px){.sidebar{position:fixed;left:-260px;top:0;height:100dvh;transition:left .22s;box-shadow:0 12px 35px #10223b25}.sidebar.open{left:0}.menu-btn{display:block}.main{padding:0 14px 18px}.topbar{height:65px;margin:0 -14px;padding:0 14px;gap:8px}.search{height:40px}.top-actions{gap:6px}.welcome{padding:24px 0 20px;align-items:flex-start;flex-direction:column}.export-btn{padding:10px 13px}.stats-grid{gap:10px}.stat-card{padding:14px}.stat-value{font-size:26px}.panel{padding:16px}.lower-grid{grid-template-columns:1fr}.contact-panel{padding:20px}.contact-panel h2{font-size:18px}}
+@media(max-width:390px){.stats-grid{grid-template-columns:1fr 1fr}.stat-top{font-size:10px}.stat-icon{width:30px;height:30px}.stat-value{font-size:23px}.stat-note{font-size:10px}.welcome h1{font-size:24px}.panel-heading h2{font-size:15px}.status{display:none}}
+@media(max-width:480px){.login-card{padding:27px 22px 23px;border-radius:20px}.brand{margin-bottom:28px;font-size:19px}.login-card h1{font-size:32px}.intro{font-size:14px}}
+
+</style>
+</head>
+<body>
+<section id="loginPage" class="login-page">
+  <main class="login-card">
+    <div class="brand"><span class="brand-icon">✦</span><span>CampusConnect</span></div>
+    <p class="eyebrow">STUDENT PORTAL · DEMO</p>
+    <h1>Welcome back</h1>
+    <p class="intro">Sign in to view your student dashboard.</p>
+    <form id="loginForm">
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" placeholder="Enter username" autocomplete="username" required>
+      <label for="password">Password</label>
+      <div class="password-wrap">
+        <input id="password" name="password" type="password" placeholder="Enter password" autocomplete="current-password" required>
+        <button type="button" id="togglePassword" class="show-password">Show</button>
+      </div>
+      <button class="submit-btn" type="submit">Sign in</button>
+      <p id="message" class="message" role="status"></p>
+    </form>
+    <aside class="demo-box">
+      <strong>Demo sign-in</strong>
+      <p>Username: <code>student</code></p>
+      <p>Password: <code>campus123</code></p>
+    </aside>
+    <p class="disclaimer">Demo access only. This static page does not provide secure authentication.</p>
+  </main>
+</section>
+<section id="portfolioPage" class="hidden">
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#overview"><span class="brand-mark">✦</span><span>Campus<span class="brand-blue">Connect</span></span></a>
+      <div class="student-mini">
+        <div class="avatar small">SR</div>
+        <div><strong>Kagithala Sandhya Rani</strong><small>B.Tech · AI & ML</small></div>
+      </div>
+      <p class="nav-label">STUDENT SPACE</p>
+      <nav class="side-nav">
+        <a class="active" href="#overview"><span>▦</span> Overview</a>
+        <a href="#attendance"><span>◷</span> Attendance</a>
+        <a href="#timetable"><span>▤</span> Timetable</a>
+        <a href="#assignments"><span>✓</span> Assignments</a>
+        <a href="#education"><span>▣</span> Academics</a>
+        <a href="#projects"><span>✧</span> Projects</a>
+        <a href="#contact"><span>✉</span> Contact</a>
+      </nav>
+      <div class="sidebar-bottom"><div class="help-icon">?</div><div><strong>Need help?</strong><small>Contact your student support</small></div></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+        <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Search courses, projects, skills..."></label>
+        <div class="top-actions"><button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☼</button><div class="avatar top-avatar">SR</div></div>
+      </header>
+
+      <section class="welcome" id="overview">
+        <div>
+          <p class="date-line" id="todayDate">YOUR STUDENT OVERVIEW</p>
+          <h1>Good day, Sandhya <span class="sun">☀️</span></h1>
+          <p class="subheading">Here’s your academic and project snapshot.</p>
+        </div>
+        <button class="export-btn" id="exportBtn"><span>↓</span> Export overview</button>
+      </section>
+
+      <section class="stats-grid" aria-label="Student overview statistics">
+        <article class="stat-card"><div class="stat-top"><span>Current CGPA</span><span class="stat-icon blue">✧</span></div><div class="stat-value">8.6 <small>/ 10</small></div><p class="stat-note">B.Tech · AI & ML</p></article>
+        <article class="stat-card"><div class="stat-top"><span>Graduation year</span><span class="stat-icon violet">▣</span></div><div class="stat-value">2027</div><p class="stat-note">Final-year student</p></article>
+        <article class="stat-card"><div class="stat-top"><span>Featured projects</span><span class="stat-icon gold">✦</span></div><div class="stat-value">02</div><p class="stat-note">AI/ML and IoT projects</p></article>
+        <article class="stat-card"><div class="stat-top"><span>Languages</span><span class="stat-icon green">文</span></div><div class="stat-value">02</div><p class="stat-note">English · Telugu</p></article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel attendance-panel" id="attendance">
+          <div class="panel-heading"><div><h2>Academic profile</h2><p>Your education at a glance</p></div><a href="#education">View details →</a></div>
+          <div class="profile-progress">
+            <div class="progress-title"><span>B.Tech – CSE (AI & ML)</span><strong>8.6 CGPA</strong></div><div class="progress-track"><span style="width:86%"></span></div>
+            <div class="progress-title"><span>Intermediate</span><strong>7.4 CGPA</strong></div><div class="progress-track"><span style="width:74%"></span></div>
+            <div class="progress-title"><span>SSC</span><strong>9.9 CGPA</strong></div><div class="progress-track"><span style="width:99%"></span></div>
+          </div>
+          <div class="notice"><span>✦</span><div><strong>Focus area: Artificial Intelligence</strong><p>Python, machine learning, prompt engineering and LLM workflows.</p></div></div>
+        </article>
+
+        <article class="panel skills-panel">
+          <div class="panel-heading"><div><h2>Skills snapshot</h2><p>Core tools and concepts</p></div><a href="#skills">All skills →</a></div>
+          <div class="skill-bars">
+            <div><div class="skill-label"><span>Python</span><strong>Programming</strong></div><div class="progress-track"><span style="width:82%"></span></div></div>
+            <div><div class="skill-label"><span>Machine Learning</span><strong>AI / ML</strong></div><div class="progress-track"><span style="width:78%"></span></div></div>
+            <div><div class="skill-label"><span>HTML & CSS</span><strong>Web</strong></div><div class="progress-track"><span style="width:72%"></span></div></div>
+            <div><div class="skill-label"><span>Prompt Engineering</span><strong>Generative AI</strong></div><div class="progress-track"><span style="width:80%"></span></div></div>
+          </div>
+          <p class="tiny-note">Visual indicators are portfolio summaries, not formal test scores.</p>
+        </article>
+      </section>
+
+      <section class="content-grid lower-grid">
+        <article class="panel timetable-panel" id="timetable">
+          <div class="panel-heading"><div><h2>Learning roadmap</h2><p>Current focus areas</p></div><a href="#internship">Internship →</a></div>
+          <div class="roadmap-row"><div class="roadmap-date">01</div><div class="roadmap-detail"><strong>Python & Machine Learning</strong><span>Programming · Classification · Data analysis</span></div><span class="status status-blue">Core skill</span></div>
+          <div class="roadmap-row"><div class="roadmap-date">02</div><div class="roadmap-detail"><strong>Prompt Engineering for AI</strong><span>AICTE–EduSkills virtual internship</span></div><span class="status status-green">Internship</span></div>
+          <div class="roadmap-row"><div class="roadmap-date">03</div><div class="roadmap-detail"><strong>Generative AI capstone</strong><span>Content generation · Sentiment analysis</span></div><span class="status status-gold">Project</span></div>
+        </article>
+        <article class="panel" id="assignments">
+          <div class="panel-heading"><div><h2>Featured projects</h2><p>Selected work from your portfolio</p></div><a href="#projects">See projects →</a></div>
+          <div class="assignment-row"><div class="project-symbol blue-bg">▤</div><div class="assignment-info"><strong>News Spam Detection</strong><span>Machine Learning · Text classification</span></div><span class="arrow">↗</span></div>
+          <div class="assignment-row"><div class="project-symbol gold-bg">♧</div><div class="assignment-info"><strong>Smart Forest Fire Detection</strong><span>IoT · Sensor-based monitoring</span></div><span class="arrow">↗</span></div>
+          <div class="assignment-row"><div class="project-symbol violet-bg">✧</div><div class="assignment-info"><strong>AI Content Generation</strong><span>Internship capstone project</span></div><span class="arrow">↗</span></div>
+        </article>
+      </section>
+
+      <section class="panel details-panel" id="education">
+        <div class="panel-heading"><div><h2>Education history</h2><p>Academic qualifications</p></div></div>
+        <div class="table-wrap"><table><thead><tr><th>DEGREE</th><th>INSTITUTION</th><th>CGPA</th><th>YEAR</th></tr></thead><tbody>
+          <tr><td><strong>B.Tech – CSE (AI & ML)</strong></td><td>Mohan Babu University</td><td><span class="grade">8.6</span></td><td>2027</td></tr>
+          <tr><td><strong>Intermediate</strong></td><td>Sri Chaitanya Junior College</td><td><span class="grade">7.4</span></td><td>2023</td></tr>
+          <tr><td><strong>SSC</strong></td><td>Sri Chaitanya Techno School</td><td><span class="grade">9.9</span></td><td>2021</td></tr>
+        </tbody></table></div>
+      </section>
+
+      <section class="content-grid lower-grid">
+        <article class="panel" id="skills"><div class="panel-heading"><div><h2>Technical skills</h2><p>Your toolkit</p></div></div><div class="chip-list"><span>Python</span><span>HTML</span><span>CSS</span><span>Machine Learning</span><span>Prompt Engineering</span><span>LLM Fundamentals</span><span>OpenAI API</span><span>Hugging Face Transformers</span><span>Sentiment Analysis</span><span>Data Visualization</span></div></article>
+        <article class="panel" id="internship"><div class="panel-heading"><div><h2>Internship experience</h2><p>Professional learning</p></div></div><div class="internship-card"><div class="internship-mark">✦</div><div><strong>AICTE–EduSkills Virtual Internship</strong><p>Prompt Engineering for AI</p><small>August 2026 – October 2026</small></div></div><ul class="compact-list"><li>Explored AI, LLMs and prompt design.</li><li>Used OpenAI API and Hugging Face Transformers.</li><li>Created an AI-powered content generation capstone.</li></ul></article>
+      </section>
+
+      <section class="content-grid lower-grid" id="projects">
+        <article class="panel project-card"><span class="project-label">MACHINE LEARNING</span><h2>News Spam Detection</h2><p>Classifier to distinguish real and spam news using keywords, source credibility, and writing patterns.</p><div class="chip-list"><span>Python</span><span>Classification</span><span>Text analysis</span></div></article>
+        <article class="panel project-card"><span class="project-label">INTERNET OF THINGS</span><h2>Smart Sensor-Based Forest Fire Detection</h2><p>Real-time monitoring concept using Arduino Mega, flame sensor, DHT22 sensor, and wind vane to support fire-spread prediction.</p><div class="chip-list"><span>Arduino Mega</span><span>DHT22</span><span>IoT</span></div></article>
+      </section>
+
+      <section class="contact-panel" id="contact"><div><p class="eyebrow">LET'S CONNECT</p><h2>Ready to build something meaningful?</h2><p>Reach out for internship opportunities, collaborations, or project discussions.</p><p class="location">⌖ Tirupati, Andhra Pradesh</p></div><div class="contact-links"><a href="mailto:sandhyakagithala26@gmail.com">✉ sandhyakagithala26@gmail.com</a><a href="tel:+919849055076">☎ +91 98490 55076</a><a href="#" id="linkedinLink">↗ LinkedIn Profile (add URL)</a></div></section>
+      <footer>© <span id="year"></span> Kagithala Sandhya Rani · CampusConnect Student Dashboard</footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  
+</section>
+<script>
+
+const loginPage=document.getElementById('loginPage');
+const portfolioPage=document.getElementById('portfolioPage');
+const form=document.getElementById('loginForm');
+const passwordInput=document.getElementById('password');
+const togglePassword=document.getElementById('togglePassword');
+const message=document.getElementById('message');
+const toast=document.getElementById('toast');
+
+togglePassword.addEventListener('click',()=>{
+ const show=passwordInput.type==='password';
+ passwordInput.type=show?'text':'password';
+ togglePassword.textContent=show?'Hide':'Show';
+});
+function showToast(text){
+ toast.textContent=text;toast.classList.add('show');
+ window.setTimeout(()=>toast.classList.remove('show'),2600);
+}
+form.addEventListener('submit',(event)=>{
+ event.preventDefault();
+ const username=document.getElementById('username').value.trim();
+ if(username==='student' && passwordInput.value==='campus123'){
+  message.classList.add('success');message.textContent='Sign-in successful! Opening your portfolio…';
+  window.setTimeout(()=>{
+   loginPage.classList.add('hidden');
+   portfolioPage.classList.remove('hidden');
+   document.body.classList.remove('login-page');
+   window.scrollTo(0,0);
+   const d=document.getElementById('todayDate');
+   if(d)d.textContent=new Intl.DateTimeFormat('en-IN',{weekday:'long',month:'long',day:'numeric',year:'numeric'}).format(new Date());
+   const y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
+  },300);
+ }else{
+  message.classList.remove('success');
+  message.textContent='Incorrect username or password. Use the demo credentials shown below.';
+ }
+});
+const menuBtn=document.getElementById('menuBtn');
+const sidebar=document.getElementById('sidebar');
+if(menuBtn&&sidebar)menuBtn.addEventListener('click',()=>sidebar.classList.toggle('open'));
+document.querySelectorAll('.side-nav a').forEach(a=>a.addEventListener('click',()=>{
+ document.querySelectorAll('.side-nav a').forEach(n=>n.classList.remove('active'));
+ a.classList.add('active');if(sidebar)sidebar.classList.remove('open');
+}));
+const themeBtn=document.getElementById('themeBtn');
+if(themeBtn)themeBtn.addEventListener('click',()=>document.body.classList.toggle('dark'));
+const exportBtn=document.getElementById('exportBtn');
+if(exportBtn)exportBtn.addEventListener('click',()=>window.print());
+const searchInput=document.getElementById('searchInput');
+if(searchInput)searchInput.addEventListener('input',()=>{
+ const q=searchInput.value.trim().toLowerCase();
+ document.querySelectorAll('#portfolioPage .panel, #portfolioPage .stat-card').forEach(card=>{
+  card.style.display=(!q||card.innerText.toLowerCase().includes(q))?'':'none';
+ });
+});
+const linkedin=document.getElementById('linkedinLink');
+if(linkedin)linkedin.addEventListener('click',e=>{e.preventDefault();showToast('Edit index.html and add your LinkedIn profile URL.');});
+const stylePrint=document.createElement('style');
+stylePrint.textContent='@media print{.sidebar,.topbar,.export-btn,.menu-btn,.toast{display:none!important}.main{padding:0!important}.panel,.stat-card{break-inside:avoid;box-shadow:none!important}#portfolioPage{display:block!important}}';
+document.head.appendChild(stylePrint);
+
+</script>
+</body>
+</html>
